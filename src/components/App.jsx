@@ -1,8 +1,11 @@
-import { Contacts } from './contacts/contacts';
-import { FindFilt } from './filter/findFiltr';
-import { Form } from './formAddContact/form';
+import { Route, Routes } from 'react-router-dom';
+
+import Register from './FormLogIn/formRegiste';
+import LogIn from './FormLogIn/formLogIn';
+import Layout from './Layout';
 
 export const App = () => {
+
   return (
     <div
       style={{
@@ -15,9 +18,12 @@ export const App = () => {
         flexDirection: 'column',
       }}
     >
-      <Form />
-      <FindFilt/>
-      <Contacts />
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/login' element={<LogIn/>}/>
+        </Route>
+      </Routes>
     </div>
   );
 };
