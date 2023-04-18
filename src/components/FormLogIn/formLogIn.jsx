@@ -1,23 +1,26 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { logIn } from "redux/operations";
 
 const LogIn = () => {
     const [email, setEmail]= useState('')
     const [password, setPassword] = useState('')
   const dispatch = useDispatch()
 
-  const handleChange = ({ traget: { name, value } }) => {
-    switch (name) {
+  const handleChange = (e) => {
+    const val = e.target.name
+    switch (val) {
       case 'email':
-        return setEmail(value);
+        return setEmail(e.target.value);
       case 'password':
-        return setPassword(value);
+        return setPassword(e.target.value);
       default:
         return;
     }
   };
 const handleSubmit =(e)=>{
     e.preventDefault();
+    dispatch(logIn({email,password}))
     setEmail('')
     setPassword('')
 }

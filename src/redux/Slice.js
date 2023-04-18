@@ -6,12 +6,14 @@ export const filterSlice = createSlice({
   initialState: '',
   reducers: {
     changeFilterRedux(state, action) {
+      console.log(action.payload);
       return (state = action.payload);
     },
   },
 });
 
 export const { changeFilterRedux } = filterSlice.actions;
+
 const contactSlice = createSlice({
   name: 'contact',
   initialState: {
@@ -63,4 +65,4 @@ const contactSlice = createSlice({
   },
 });
 
-export const contactsSlice = contactSlice.reducer;
+export const contactsReducer = contactSlice.reducer;

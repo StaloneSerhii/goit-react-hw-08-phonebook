@@ -6,31 +6,32 @@ import { deleteContact, fetchContact } from 'redux/operations';
 
 export const Contacts = () => {
   const contact = useSelector(getContact);
-  const filterRedux = useSelector(getStatusFilter)
+  // const filterRedux = useSelector(getStatusFilter)
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchContact());
   }, [dispatch]);
 
-  const filterContacts = () => {
-    const normalizedFilter = filterRedux.toLowerCase();
-    return contact.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter));
-  };
+  // const filterContacts = () => {
+  //   const normalizedFilter = filterRedux.toLowerCase();
+  //   return contact.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter));
+  // };
 
-  const filtredContacts = filterContacts();
-
+  // const filtredContacts = filterContacts();
+console.log(contact);
   return (
     <div>
       <h2>Contacts</h2>
       <ul>
-        {filtredContacts && filtredContacts.map(({ id, name, phone }) => (
+        {contact.map(({ id, name, number }) => (
           <li key={id}>
             <p>Name:</p>
             <span>{name}</span>
             <p>Number:</p>
-            <span>{phone}</span>
+            <span>{number}</span>
             <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
           </li>
         ))}
