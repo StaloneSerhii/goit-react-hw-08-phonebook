@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { getContact } from 'redux/selector';
-// import AccountCircle from '@mui/icons-material/AccountCircle';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 export const Form = () => {
@@ -58,7 +58,7 @@ export const Form = () => {
           id="input-with-icon-adornment"
           startAdornment={
             <InputAdornment position="start">
-              
+              <AccountCircle />
             </InputAdornment>
           }
         />
