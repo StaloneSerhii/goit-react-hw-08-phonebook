@@ -1,6 +1,9 @@
 .bg {
    background-image: url(./bg.png); 
+
+   margin-right: 650px;
    padding-bottom: 380px;
+   background-repeat: no-repeat;
 }
 .header {
     width: 400px;
