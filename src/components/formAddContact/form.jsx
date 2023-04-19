@@ -58,7 +58,7 @@ export const Form = () => {
           id="input-with-icon-adornment"
           startAdornment={
             <InputAdornment position="start">
-              <AccountCircle />
+              
             </InputAdornment>
           }
         />
