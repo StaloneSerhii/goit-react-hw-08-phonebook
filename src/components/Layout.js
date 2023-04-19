@@ -1,12 +1,12 @@
 import { Suspense } from 'react';
-
+import './app.css'
 const {  Outlet } = require('react-router-dom');
 const { default: Header } = require('./header/header');
 
 const Layout = () => {
   return (
     <div>
-      <header>
+      <header className='header'>
         <Header />
         <Suspense>
           <Outlet />

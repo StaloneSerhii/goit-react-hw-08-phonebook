@@ -6,7 +6,6 @@ export const filterSlice = createSlice({
   initialState: '',
   reducers: {
     changeFilterRedux(state, action) {
-      console.log(action.payload);
       return (state = action.payload);
     },
   },
@@ -28,18 +27,18 @@ const contactSlice = createSlice({
     [fetchContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items.push(...action.payload);
+      state.items=action.payload
     },
     [fetchContact.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
     [addContact.pending]: state => {
-      state.loading = true;
+      state.isLoading = true;
       state.error = null;
     },
     [addContact.fulfilled]: (state, action) => {
-      state.loading = false;
+      state.isLoading = false;
       state.error = null;
       state.items.push(action.payload);
     },
@@ -48,18 +47,18 @@ const contactSlice = createSlice({
       state.error = action.payload;
     },
     [deleteContact.pending]: state => {
-      state.loading = true;
+      state.isLoading = true;
       state.error = null;
     },
     [deleteContact.fulfilled]: (state, action) => {
-      state.loading = false;
+      state.isLoading = false;
       const index = state.items.findIndex(
         task => task.id === action.payload.id
       );
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: (state, action) => {
-      state.loading = false;
+      state.isLoading = false;
       state.error = action.payload;
     },
   },

@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
-import { getContact, getStatusFilter} from 'redux/selector';
+import { getContact, getStatusFilter } from 'redux/selector';
 import { useEffect } from 'react';
 import { deleteContact, fetchContact } from 'redux/operations';
+import { Button } from '@mui/material';
 
 export const Contacts = () => {
   const contact = useSelector(getContact);
-  // const filterRedux = useSelector(getStatusFilter)
+  const filterRedux = useSelector(getStatusFilter);
 
   const dispatch = useDispatch();
 
@@ -14,25 +15,34 @@ export const Contacts = () => {
     dispatch(fetchContact());
   }, [dispatch]);
 
-  // const filterContacts = () => {
-  //   const normalizedFilter = filterRedux.toLowerCase();
-  //   return contact.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter));
-  // };
+  const filterContacts = () => {
+    const normalizedFilter = filterRedux.toLowerCase();
+    return contact.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
-  // const filtredContacts = filterContacts();
-console.log(contact);
+  const filtredContacts = filterContacts();
+
   return (
     <div>
       <h2>Contacts</h2>
       <ul>
-        {contact.map(({ id, name, number }) => (
+        {filtredContacts.map(({ id, name, number }) => (
           <li key={id}>
-            <p>Name:</p>
-            <span>{name}</span>
-            <p>Number:</p>
-            <span>{number}</span>
-            <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
+            <p>
+              Name: <span>{name}</span>
+            </p>
+            <p>
+              Number: <span>{number}</span>
+            </p>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => dispatch(deleteContact(id))}
+            >
+              Delete
+            </Button>
           </li>
         ))}
       </ul>

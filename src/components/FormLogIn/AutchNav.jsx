@@ -1,5 +1,6 @@
+import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsername } from "redux/authPer/auth-selector";
+import {getUsername}  from "redux/authPer/auth-selector";
 import { logOut } from "redux/operations";
 
 
@@ -10,7 +11,7 @@ const AuthNav = () => {
   return (
     <div>
       <p>Welcom {name}</p>
-      <button onClick={()=> dispatch(logOut())}>Exit</button>
+     <Button variant="contained" onClick={()=> dispatch(logOut())}>Exit</Button>
     </div>
   );
 };

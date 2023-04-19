@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilterRedux } from 'redux/Slice';
 import { getStatusFilter } from 'redux/selector';
@@ -10,7 +11,9 @@ export const FindFilt = () => {
   return (
     <div className='filtr'>
       <span>Find contacts by name</span>
-      <input
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
       value={contact}
         type="text"
         onChange={e => dispatch(changeFilterRedux(e.target.value))}

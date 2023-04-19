@@ -1,0 +1,11 @@
+.bg {
+   background-image: url(./bg.png); 
+   padding-bottom: 380px;
+}
+.header {
+    width: 400px;
+    padding-right: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

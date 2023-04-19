@@ -16,8 +16,8 @@ export const addContact = createAsyncThunk(
   'contact/addContact',
   async ({name, number}, thunkAPI) => {
     try {
-      const  data  = await axios.post('/contacts', {name, number});
-      return data.data;
+      const  {data}  = await axios.post('/contacts', {name, number});
+      return data
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -41,7 +41,6 @@ export const deleteContact = createAsyncThunk(
   async (taskId, thunkAPI) => {
     try {
       const {data} = await axios.delete(`/contacts/${taskId}`);
-      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -95,14 +94,13 @@ const state = thunkAPI.getState()
 const persistToken = state.auth.token
 if (persistToken === null) {
   console.log("Tokena null");
-  return state
-}
-token.set(persistToken)
+  return thunkAPI.rejectWithValue();
+} else {
 try {
+  token.set(persistToken)
   const {data} = await axios.get(`/users/current`);
-  console.log(data);
   return data
 } catch (e) {
   console.log(e);
-}
+}}
 })
