@@ -20,7 +20,8 @@ export const App = () => {
   return isFetching ? (
     isFetching
   ) : (
-    <div className='bg'>
+    <div >
+  
       <Routes>
         <Route path="/" element={<Layout/>}>
         <Route index element={<img src='https://risovach.ru/upload/2016/04/mem/gusi_111527207_orig_.jpg' alt='img-us' width='380px'/>}/>
