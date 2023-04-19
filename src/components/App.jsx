@@ -24,7 +24,7 @@ export const App = () => {
   
       <Routes>
         <Route path="/" element={<Layout/>}>
-        <Route index element={<img src='https://risovach.ru/upload/2016/04/mem/gusi_111527207_orig_.jpg' alt='img-us' width='380px'/>}/>
+        <Route index element={<img className='bg' src='https://risovach.ru/upload/2016/04/mem/gusi_111527207_orig_.jpg' alt='img-us' width='380px'/>}/>
           <Route
             path="/register"
             element={
